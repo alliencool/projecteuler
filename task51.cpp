@@ -53,17 +53,6 @@ void print_vec(vector<int> v)
         cout<<(*it)<<endl;
 }
 
-int get_positions_length(int num)
-{
-    int pos=1;
-    for (int i = 1; i <= 32; i++)
-    {
-        if (num & (1<<(i-1)))
-            pos = i;
-    }
-    return pos;
-}
-
 vector<int> get_positions(int num)
 {
     vector<int> result;
