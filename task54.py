@@ -20,6 +20,9 @@ class Hand(object):
         self.init_list = init_list
         self.cards = [(self._value_map(x[0]), x[1]) for x in self.init_list]
         self.cards = sorted(self.cards)
+        
+    def __str__(self):
+        return str(self.init_list)
 
     def _value_map(self, card_value):
         
