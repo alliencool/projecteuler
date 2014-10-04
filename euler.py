@@ -84,6 +84,7 @@ def task53():
             num = 1
             for i in xrange(len(light_num)):
                 num *= light_num[i]
+            
             den = 1
             for i in xrange(len(light_den)):
                 den *= light_den[i]
