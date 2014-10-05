@@ -70,7 +70,7 @@ class Hand(object):
         if self.rank > other_hand.rank:
             return True
         elif other_hand.rank > self.rank:
-            return False:
+            return False
 
 
 def task54(filename):
