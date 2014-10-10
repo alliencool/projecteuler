@@ -14,6 +14,7 @@ def cached(func):
         
         result = func(slf, a, b)
         ic.cache_dict[(a, b)] = result
+        ic.cache_dict[(b, a)] = result
         return result
 
     return decorated
@@ -35,16 +36,48 @@ class PyRational(object):
 
     def __str__(self):
         return "%s / %s" % (self.numerator, self.denominator)
-    
-    @cached
+
     def _gcd(self, a, b):
+        return self._gcd_eucl(a, b)
+    
+    def _gcd_bin(self, a, b):
+
+        result = 1
+
+        while True:
+
+            if a == b:
+                result *= a
+                break
+
+            if a == 0 or b == 0:
+                result *= (a + b)
+                break
+        
+            if a % 2 == 0 and b % 2 == 0:
+                result *= 2
+                a /= 2
+                b /= 2
+            elif a % 2 == 0:
+                a /= 2
+            elif b % 2 == 0:
+                b /= 2
+            elif a > b:
+                a = (a - b) / 2
+            else:
+                b = (b - a) / 2
+
+        return result
+
+    @cached
+    def _gcd_eucl(self, a, b):
 
         if a == 0:
             return b
         if b == 0:
             return a
         
-        return self._gcd(b, a % b)
+        return self._gcd_eucl(b, a % b)
     
     def __gt__(self, rational):
         return self.numerator * rational.denominator > self.denominator * rational.numerator
