@@ -1,3 +1,17 @@
+
+/*
+
+$ time ./a.out 100000000 3
+Result is 5197 5701 6733 8389
+Sum = 26033
+
+real    0m38.378s
+user    0m39.619s
+sys 0m0.378s
+
+
+*/
+
 #include <cstdlib>
 #include <iostream>
 
