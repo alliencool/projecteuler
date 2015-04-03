@@ -19,8 +19,8 @@ def eratosthene(num):
             for j in xrange(i * 2, num + 1, i):
                 pwr = 0
                 number = j
-                while number % j == 0:
-                    number = number / j
+                while number % i == 0:
+                    number = number / i
                     pwr += 1
 
                 if result[j] == None:    
